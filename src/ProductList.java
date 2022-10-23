@@ -24,6 +24,7 @@ public class ProductList {
     public void deleteProduct(String name) {
         set.removeIf(product -> name.equals(product.getNameProduct()));
     }
+
     public void show(){
         set.forEach(p -> {
             System.out.printf("%s, %.2f кг., %.2f руб, в корзине - %b. ",
