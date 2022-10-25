@@ -4,18 +4,14 @@ public class Product {
 
         private final String nameProduct;
         private Float amountProduct;
-        private Float weightProduct;
-        private boolean isPurchased;
 
-        public Product(String nameProduct, Float amountProduct, Float weightProduct) {
+        public Product(String nameProduct, Float amountProduct) {
                 if (nameProduct == null || nameProduct.isBlank()) {
                         System.out.println("Заполните карточку товара полностью");
                         throw new IllegalArgumentException();
                 }
                 this.nameProduct = nameProduct;
                 setAmountProduct(amountProduct);
-                setWeightProduct(weightProduct);
-                isPurchased = false;
         }
 
         public String getNameProduct() {
@@ -26,32 +22,12 @@ public class Product {
                 return amountProduct;
         }
 
-        public Float getWeightProduct() {
-                return weightProduct;
-        }
-
-        public boolean isPurchased() {
-                return isPurchased;
-        }
-
         public void setAmountProduct(Float amountProduct) {
                 if (amountProduct == null || amountProduct <= 0) {
                         System.out.println("Заполните карточку товара полностью");
                         throw new IllegalArgumentException();
-        }
+                }
                 this.amountProduct = amountProduct;
-        }
-
-        public void setWeightProduct(Float weightProduct) {
-                if (weightProduct == null || weightProduct <= 0) {
-                        System.out.println("Заполните карточку товара полностью");
-                        throw new IllegalArgumentException();
-                        }
-                this.weightProduct = weightProduct;
-        }
-
-        public void setPurchased(boolean purchased) {
-                isPurchased = purchased;
         }
 
         @Override
@@ -71,7 +47,6 @@ public class Product {
         public String toString() {
                 return "Наименование - " + nameProduct +
                         ". Стоимость за кг - " + amountProduct +
-                        ". Вес - " + weightProduct +
-                        ". В корзине - " + isPurchased ;
+                        ". Вес - " + "." ;
         }
 }

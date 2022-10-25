@@ -1,11 +1,9 @@
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Recipe {
     private String name;
     private Float recipeCost;
-    private Set<Product> products;
+    private final Set<Product> products;
 
     public Recipe(String name) {
         setName(name);
@@ -40,6 +38,7 @@ public class Recipe {
         this.name = name;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -59,5 +58,14 @@ public class Recipe {
         result = 31*result*(int) (temp ^ (temp >>>32));
         result = 31*result*(products != null ? products.hashCode():0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Recipe{" +
+                "name='" + name + '\'' +
+                ", recipeCost=" + recipeCost +
+                ", products=" + products +
+                '}';
     }
 }

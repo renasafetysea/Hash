@@ -2,23 +2,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ProductList {
-    private  Set <Product> set;
+    private final Set <Product> set;
     public ProductList(){
         set = new HashSet<>();
     }
-    public void add(String nameProduct,Float amountProduct, Float weightProduct){
-        final Product product = new Product(nameProduct,amountProduct,weightProduct);
+    public void add(String nameProduct,Float amountProduct){
+        final Product product = new Product(nameProduct,amountProduct);
         if (set.contains(product)){
             throw new IllegalArgumentException("Продукт уже в корзине!");
         }
         set.add(product);
-    }
-    public void markAsBought(String name) {
-        for (Product product : set) {
-            if (name.equals(product.getNameProduct())) {
-                product.setPurchased(true);
-            }
-        }
     }
 
     public void deleteProduct(String name) {
@@ -27,11 +20,8 @@ public class ProductList {
 
     public void show(){
         set.forEach(p -> {
-            System.out.printf("%s, %.2f кг., %.2f руб, в корзине - %b. ",
-                    p.getNameProduct(), p.getAmountProduct(), p.getWeightProduct(), p.isPurchased());
+            System.out.printf("%s, %.2f кг. ",
+                    p.getNameProduct(), p.getAmountProduct());
         });
     }
 }
-
-
-
