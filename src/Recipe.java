@@ -3,20 +3,22 @@ import java.util.*;
 public class Recipe {
     private String name;
     private Float recipeCost;
-    private final Set<Product> products;
+    private final Map<Product,Integer> products;
+    private int count;
+
 
     public Recipe(String name) {
         setName(name);
         recipeCost = 0f;
-        products = new HashSet<>();
+        products = new HashMap<>();
 
     }
     public void addProduct(Product product){
-        if (products.contains(product)){
+        if (products.containsKey(product)){
             throw new IllegalArgumentException("Этот продукт уже в списке!");
         }
-        products.add(product);
-        recipeCost += product.getAmountProduct();
+        products.put(product,count);
+        recipeCost += product.getAmountProduct() + count ;
     }
 
     public String getName() {
@@ -27,8 +29,8 @@ public class Recipe {
         return recipeCost;
     }
 
-    public Set<Product> getProducts() {
-        return products;
+    public Map<Product,Integer> getProducts() {
+        return Collections.unmodifiableMap(products);
     }
 
     public void setName(String name) {

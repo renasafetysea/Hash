@@ -4,7 +4,6 @@ public class Product {
 
         private final String nameProduct;
         private Float amountProduct;
-
         public Product(String nameProduct, Float amountProduct) {
                 if (nameProduct == null || nameProduct.isBlank()) {
                         System.out.println("Заполните карточку товара полностью");
